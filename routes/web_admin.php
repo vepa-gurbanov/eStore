@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\Auth\OtpController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('admin.')->prefix('/admin')->group(function () {
 
-        Route::middleware('guest')->group(function () {
-//            Route::controller()
-        });
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [LoginController::class, 'create'])->name('login');
+        Route::put('/login', [LoginController::class, 'store']);
 
+        Route::get('/verify', [OtpController::class, 'store'])->name('verify');
+        Route::put('/verify', [OtpController::class, 'store']);
     });
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    });
+});
