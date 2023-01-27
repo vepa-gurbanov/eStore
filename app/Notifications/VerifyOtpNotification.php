@@ -26,7 +26,7 @@ class VerifyOtpNotification extends Notification
     {
         return (new MailMessage)
             ->line('Please use the following OTP to verify your email.')
-            ->line($this->otp)
+            ->line($this->otp['otp_code'])
             ->line('Thank you for using our application!');
     }
 

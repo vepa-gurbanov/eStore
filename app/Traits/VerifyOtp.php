@@ -10,7 +10,7 @@ trait VerifyOtp
 {
     public function generateOtp(User $user): string
     {
-        $otp = Str::random(5);
+        $otp = rand(10000, 99999);
         $user->otp_code = $otp;
         $user->otp_expires_at = now()->addMinutes(10);
         $user->save();
@@ -22,7 +22,7 @@ trait VerifyOtp
     {
         if ($user->otp_code === $otp && $user->otp_expires_at > now()) {
             $user->otp_code = null;
-            $user->otp_expiration = null;
+            $user->otp_expires_at = null;
             $user->save();
             return true;
         }
@@ -34,7 +34,7 @@ trait VerifyOtp
         return ! is_null($this->email_verified_at);
     }
 
-    public function markAsVerified()
+    public function markAsVerified(): bool
     {
         return $this->forceFill([
             'email_verified_at' => $this->freshTimestamp(),
