@@ -24,7 +24,7 @@ class OtpController extends Controller
             if ( ! Auth::user()->isVerified() )
             {
                 Auth::user()->markAsVerified();
-                return to_route('admin.dashboard', '?verified=1');
+                return to_route('admin.dashboard', 'verified=1');
             }
             return to_route('admin.dashboard');
         } else {

@@ -4,7 +4,6 @@ namespace App\Traits;
 
 use App\Models\User;
 use App\Notifications\VerifyOtpNotification;
-use Illuminate\Support\Str;
 
 trait VerifyOtp
 {
@@ -43,8 +42,8 @@ trait VerifyOtp
 
     public function sendOtpEmailVerificationNotification(User $user): void
     {
-        $otp = $this->generateOtp($user);
-        $this->notify(new VerifyOtpNotification($user, $otp));
+        $this->generateOtp($user);
+        $this->notify(new VerifyOtpNotification($user));
     }
 
     public function getEmailForVerification()

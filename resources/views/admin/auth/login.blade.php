@@ -21,18 +21,18 @@
         @csrf
         @honeypot
         <div class="form-floating">
-            <input type="email" class="form-control" name="email" id="email" placeholder="{{ old('password') }}">
-            <label for="email">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="@lang('global.emailAddress')">
+            <label for="email">@lang('global.emailAddress')</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" name="password" id="password">
-            <label for="password">Your password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="@lang('global.password')">
+            <label for="password">@lang('global.password')</label>
         </div>
         <div class="text-center">
             or
         </div>
-        <button class="w-100 btn btn-lg btn-outline-primary fs-6" id="otp_code" type="submit">Login with OTP</button>
-        <button class="w-100 btn btn-lg btn-primary signin fs-6" type="submit">Sign in</button>
+        <button class="w-100 btn btn-lg btn-outline-primary fs-6" id="otp_code" type="submit">@lang('global.loginWithOtp')</button>
+        <button class="w-100 btn btn-lg btn-primary signin fs-6" type="submit">@lang('global.submit')</button>
     </form>
 </main>
 
